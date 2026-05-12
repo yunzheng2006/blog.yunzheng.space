@@ -216,10 +216,16 @@ a:hover { text-decoration-color: var(--fg); color: var(--fg); }
     font-size: 0.78rem;
 }
 .post-content img {
-    max-width: 100%;
+    display: block;
+    max-width: 420px;
     height: auto;
-    border-radius: 3px;
+    margin: 0.8rem auto 1.2rem;
+    border-radius: 4px;
     border: 1px solid var(--line);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+@media (max-width: 600px) {
+    .post-content img { max-width: 100%; }
 }
 .post-content table {
     width: 100%;

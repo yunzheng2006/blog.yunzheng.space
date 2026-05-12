@@ -1,5 +1,3 @@
-local_backend: true
-
 backend:
   name: github
   repo: yunzheng2006/blog.yunzheng.space
