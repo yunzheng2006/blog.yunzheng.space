@@ -1,9 +1,0 @@
-{{- $img := .Page.Resources.GetMatch .Destination -}}
-{{- if $img -}}
-  {{- $displayWidth := 300 -}}
-  {{- $ratio := div (float $img.Height) (float $img.Width) -}}
-  {{- $displayHeight := int (mul (float $displayWidth) $ratio) -}}
-  <img src="{{ $img.RelPermalink }}" width="{{ $displayWidth }}" height="{{ $displayHeight }}" alt="{{ .Text }}" loading="lazy">
-{{- else -}}
-  <img src="{{ .Destination }}" alt="{{ .Text }}" loading="lazy">
-{{- end -}}

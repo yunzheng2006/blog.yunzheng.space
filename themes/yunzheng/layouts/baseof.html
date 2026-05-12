@@ -43,7 +43,6 @@
     <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
     {{ with .Site.Params.mainSite }}<link rel="me" href="{{ . }}">{{ end }}
     <link rel="stylesheet" href="{{ "css/style.css" | absURL }}?v={{ now.Unix }}">
-    <style>.post-content img{display:block!important;max-width:200px!important;width:auto!important;height:auto!important;margin:.6rem auto 1rem!important;border-radius:4px;border:1px solid #d8d5d0;box-shadow:0 2px 8px rgba(0,0,0,.06)}</style>
 
     {{/* JSON-LD Structured Data */}}
     {{ if .IsHome }}
