@@ -1,0 +1,51 @@
+{{ define "main" }}
+  <article>
+    <div class="post-header">
+      <div class="post-date">{{ .Date.Format "2006-01-02" }}</div>
+      <h1>{{ .Title }}</h1>
+      <div class="post-meta">
+        {{ with .Params.tags }}
+        <div class="post-tags">
+          {{ range . }}<a class="post-tag" href="{{ "tags/" | absURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+    <nav class="post-nav">
+      {{ with .PrevInSection }}
+      <a href="{{ .RelPermalink }}">
+        <div class="label">&larr; 上一篇</div>
+        {{ .Title }}
+      </a>
+      {{ else }}<span></span>{{ end }}
+      {{ with .NextInSection }}
+      <a href="{{ .RelPermalink }}" style="text-align:right">
+        <div class="label">下一篇 &rarr;</div>
+        {{ .Title }}
+      </a>
+      {{ else }}<span></span>{{ end }}
+    </nav>
+    <section class="comments" style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);">
+      <h2 style="font-size:0.85rem;font-weight:700;color:var(--accent);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.1em;">评论</h2>
+      <script src="https://giscus.app/client.js"
+        data-repo="yunzheng2006/blog.yunzheng.space"
+        data-repo-id="R_kgDOSa7nFQ"
+        data-category="General"
+        data-category-id="DIC_kwDOSa7nFc4C81bE"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+  </article>
+{{ end }}

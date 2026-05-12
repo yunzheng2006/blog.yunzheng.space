@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <h1 style="font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid var(--line);text-transform:uppercase;letter-spacing:0.1em;">归档</h1>
+  {{ $pages := where site.RegularPages "Section" "posts" }}
+  {{ range $pages.GroupByDate "2006" }}
+  <div class="archive-year">{{ .Key }}</div>
+  <ul class="archive-list">
+    {{ range .Pages }}
+    <li>
+      <span class="date">{{ .Date.Format "01-02" }}</span>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+{{ end }}

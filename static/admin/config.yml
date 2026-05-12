@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: yunzheng2006/blog.yunzheng.space
+  branch: main
+
+media_folder: static/images
+public_folder: /images
+
+locale: zh_Hans
+
+collections:
+  - name: posts
+    label: 文章
+    folder: content/posts
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "摘要", name: "description", widget: "string", required: false }
+      - { label: "标签", name: "tags", widget: "list", required: false }
+      - { label: "草稿", name: "draft", widget: "boolean", default: false, required: false }
+      - { label: "正文", name: "body", widget: "markdown" }
