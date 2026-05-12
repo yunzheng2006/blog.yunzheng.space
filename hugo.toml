@@ -1,7 +1,7 @@
 baseURL = 'https://blog.yunzheng.space/'
 locale = 'zh-CN'
 defaultContentLanguage = 'zh'
-title = '芸峥博客'
+title = '芸峥のBlog'
 theme = 'yunzheng'
 enableRobotsTXT = true
 
@@ -10,7 +10,7 @@ enableRobotsTXT = true
 
 [params]
   author = '芸峥 (Zhenyun Sun)'
-  description = '芸峥的个人博客 — 分享网络工程、BGP、Linux、Homelab、业余无线电等技术经验与生活记录'
+  description = '芸峥的个人博客 — 分享技术学习经验与生活记录'
   mainSite = 'https://yunzheng.space'
   keywords = '芸峥, Zhenyun Sun, 博客, BGP, AS204921, 网络工程, Linux, Homelab, 业余无线电, BI1UHI, FadianRoam, eduroam'
   ogImage = 'https://yunzheng.space/yunzheng.space.png'
