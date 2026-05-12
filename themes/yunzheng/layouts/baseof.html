@@ -42,7 +42,7 @@
     <link rel="apple-touch-icon" href="https://yunzheng.space/yunzheng.space.png">
     <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
     {{ with .Site.Params.mainSite }}<link rel="me" href="{{ . }}">{{ end }}
-    <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
+    <link rel="stylesheet" href="{{ "css/style.css" | absURL }}?v={{ now.Unix }}">
 
     {{/* JSON-LD Structured Data */}}
     {{ if .IsHome }}
