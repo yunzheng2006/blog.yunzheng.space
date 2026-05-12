@@ -3,7 +3,8 @@ locale = 'zh-CN'
 defaultContentLanguage = 'zh'
 title = '芸峥博客'
 theme = 'yunzheng'
-paginate = 10
+[pagination]
+  pagerSize = 10
 enableRobotsTXT = true
 
 [params]
