@@ -121,5 +121,27 @@
             <a href="{{ .Site.Params.mainSite }}">yunzheng.space</a>
         </footer>
     </div>
+<script>
+!function(){
+var ua=navigator.userAgent.toLowerCase();
+if(!/micromessenger|wxwork|qq\//.test(ua))return;
+var d=document;
+var overlay=d.createElement("div");
+overlay.id="wxblock";
+overlay.innerHTML='<div style="text-align:center;max-width:340px;padding:0 1.5rem">'
++'<div style="font-size:3rem;margin-bottom:1.2rem">⚠️</div>'
++'<div style="font-size:1rem;font-weight:700;margin-bottom:0.8rem;color:#2c2c2c">请在浏览器中打开</div>'
++'<div style="font-size:0.82rem;color:#555;line-height:1.8;margin-bottom:1.5rem">'
++'Please open this page in an external browser.</div>'
++'<div style="background:#fff;border:1px solid #d8d5d0;border-radius:6px;padding:1rem 1.2rem;font-size:0.82rem;color:#2c2c2c;line-height:2">'
++'点击右上角 <strong style="color:#3d5a80">⋯</strong> → 选择「<strong style="color:#3d5a80">在浏览器打开</strong>」<br>'
++'<span style="font-size:0.72rem;color:#999">Tap ⋯ → Open in Browser</span>'
++'</div>'
++'</div>';
+var s=overlay.style;
+s.cssText="position:fixed;inset:0;z-index:99999;background:#f6f5f3;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif";
+d.body.appendChild(overlay);
+}();
+</script>
 </body>
 </html>
