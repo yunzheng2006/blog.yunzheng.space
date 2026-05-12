@@ -1,7 +1,9 @@
 {{- $img := .Page.Resources.GetMatch .Destination -}}
 {{- if $img -}}
-  {{- $resized := $img.Resize "600x webp q90" -}}
-  <img src="{{ $resized.RelPermalink }}" width="{{ $resized.Width }}" height="{{ $resized.Height }}" alt="{{ .Text }}" loading="lazy">
+  {{- $displayWidth := 300 -}}
+  {{- $ratio := div (float $img.Height) (float $img.Width) -}}
+  {{- $displayHeight := int (mul (float $displayWidth) $ratio) -}}
+  <img src="{{ $img.RelPermalink }}" width="{{ $displayWidth }}" height="{{ $displayHeight }}" alt="{{ .Text }}" loading="lazy">
 {{- else -}}
   <img src="{{ .Destination }}" alt="{{ .Text }}" loading="lazy">
 {{- end -}}
