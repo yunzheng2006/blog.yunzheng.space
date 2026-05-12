@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="post-content">
-      {{ .Content }}
+      {{ .Content | replaceRE `<img ` `<img style="display:block;max-width:200px;height:auto;margin:0.6rem auto 1rem;border-radius:4px;border:1px solid #d8d5d0;box-shadow:0 2px 8px rgba(0,0,0,0.06);" ` | safeHTML }}
     </div>
     <nav class="post-nav">
       {{ with .PrevInSection }}
