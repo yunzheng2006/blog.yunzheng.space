@@ -217,7 +217,7 @@ a:hover { text-decoration-color: var(--fg); color: var(--fg); }
 }
 .post-content img {
     display: block;
-    max-width: 420px;
+    max-width: 220px;
     height: auto;
     margin: 0.8rem auto 1.2rem;
     border-radius: 4px;
