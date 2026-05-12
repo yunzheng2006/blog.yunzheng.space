@@ -3,14 +3,17 @@ locale = 'zh-CN'
 defaultContentLanguage = 'zh'
 title = '芸峥博客'
 theme = 'yunzheng'
+enableRobotsTXT = true
+
 [pagination]
   pagerSize = 10
-enableRobotsTXT = true
 
 [params]
   author = '芸峥 (Zhenyun Sun)'
-  description = '芸峥的个人博客 — 网络、技术、生活'
+  description = '芸峥的个人博客 — 分享网络工程、BGP、Linux、Homelab、业余无线电等技术经验与生活记录'
   mainSite = 'https://yunzheng.space'
+  keywords = '芸峥, Zhenyun Sun, 博客, BGP, AS204921, 网络工程, Linux, Homelab, 业余无线电, BI1UHI, FadianRoam, eduroam'
+  ogImage = 'https://yunzheng.space/yunzheng.space.png'
 
 [markup]
   [markup.highlight]
@@ -23,6 +26,11 @@ enableRobotsTXT = true
 
 [outputs]
   home = ['HTML', 'RSS']
+
+[sitemap]
+  changeFreq = 'weekly'
+  priority = 0.5
+  filename = 'sitemap.xml'
 
 [menu]
   [[menu.main]]

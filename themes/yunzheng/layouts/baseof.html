@@ -4,17 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ .Site.Title }}</title>
-    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+    {{- $desc := .Site.Params.description }}
+    {{- with .Description }}{{ $desc = . }}{{ end }}
+    {{- with .Params.description }}{{ $desc = . }}{{ end }}
+    <meta name="description" content="{{ $desc }}">
     <meta name="author" content="{{ .Site.Params.author }}">
+    <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="{{ .Permalink }}">
-    <meta property="og:title" content="{{ .Title }}">
+
+    {{/* Open Graph */}}
+    <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ .Site.Title }}">
+    <meta property="og:description" content="{{ $desc }}">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:image" content="{{ .Site.Params.ogImage | default "https://yunzheng.space/yunzheng.space.png" }}">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    {{ if .IsPage }}
+    <meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">
+    {{ with .Lastmod }}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+    <meta property="article:author" content="{{ .Site.Params.author }}">
+    {{ with .Params.tags }}{{ range . }}<meta property="article:tag" content="{{ . }}">{{ end }}{{ end }}
+    {{ end }}
+
+    {{/* Twitter Card */}}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ .Site.Title }}">
+    <meta name="twitter:description" content="{{ $desc }}">
+    <meta name="twitter:image" content="{{ .Site.Params.ogImage | default "https://yunzheng.space/yunzheng.space.png" }}">
+
     <meta name="theme-color" content="#f6f5f3">
     <link rel="icon" type="image/png" href="https://yunzheng.space/yunzheng.space.png">
+    <link rel="apple-touch-icon" href="https://yunzheng.space/yunzheng.space.png">
     <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
+    {{ with .Site.Params.mainSite }}<link rel="me" href="{{ . }}">{{ end }}
     <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
+
+    {{/* JSON-LD Structured Data */}}
+    {{ if .IsHome }}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "{{ .Site.Title }}",
+        "description": "{{ .Site.Params.description }}",
+        "url": "{{ .Site.BaseURL }}",
+        "inLanguage": "zh-CN",
+        "author": {
+            "@type": "Person",
+            "name": "{{ .Site.Params.author }}",
+            "url": "{{ .Site.Params.mainSite }}"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "{{ .Site.Params.author }}",
+            "url": "{{ .Site.Params.mainSite }}"
+        }
+    }
+    </script>
+    {{ else if .IsPage }}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{ .Title }}",
+        "description": "{{ $desc }}",
+        "url": "{{ .Permalink }}",
+        "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}",
+        "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+        "inLanguage": "zh-CN",
+        "author": {
+            "@type": "Person",
+            "name": "{{ .Site.Params.author }}",
+            "url": "{{ .Site.Params.mainSite }}"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "{{ .Site.Params.author }}",
+            "url": "{{ .Site.Params.mainSite }}"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ .Permalink }}"
+        }{{ with .Params.tags }},
+        "keywords": "{{ delimit . ", " }}"{{ end }}
+    }
+    </script>
+    {{ end }}
 </head>
 <body>
     <div class="page">
