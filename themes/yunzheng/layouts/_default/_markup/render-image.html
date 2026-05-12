@@ -1,0 +1,7 @@
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- if $img -}}
+  {{- $resized := $img.Resize "600x webp q90" -}}
+  <img src="{{ $resized.RelPermalink }}" width="{{ $resized.Width }}" height="{{ $resized.Height }}" alt="{{ .Text }}" loading="lazy">
+{{- else -}}
+  <img src="{{ .Destination }}" alt="{{ .Text }}" loading="lazy">
+{{- end -}}
