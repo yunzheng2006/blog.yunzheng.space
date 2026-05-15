@@ -40,11 +40,11 @@ draft: false
 1. 想加入的人提交PR（带上自己的RADIUS信息）
 2. 所有现有的FadianRoam Site代表在PR上投票（GitHub Review: Approve/Request Changes）
 3. **超过50%的现有成员批准**才能加入
-4. 投票期7天
+4. 投票期3天
 
 人少的时候也一样适用这个阈值，2个成员需要2票，3个成员需要2票。至少人少的时候我是这么想的。
 
-等体系成熟了之后，由核心成员组建「发电组织」（FadianRoam Governance Council），负责战略决策、争议仲裁这些事。
+等体系成熟了之后，由核心成员组建「发电委员会」（FadianRoam Governance Committee），负责组织运营、战略决策、争议仲裁这些事。
 
 ## VLAN隔离
 
@@ -121,4 +121,4 @@ Blueprint网站已经更新了这些设计：[fadianroam.yunzheng.space](https:/
 
 ---
 
-*本文由 Claude AI 基于 FadianRoam 项目的真实设计进展，经作者授权生成有限范围的内容。*
+*本人因语言组合能力障碍，使用AI总结内容并在本文表述，如果遇到错误和建议，可以在评论提出，本文已经过发布者审核。*
