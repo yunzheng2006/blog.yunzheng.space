@@ -57,6 +57,22 @@ FadianNet 骨干网（eBGP mesh）
 
 **场景2**：非BGP站点X（挂在站点A下面）的用户跑到站点B连WiFi → 认证通过 → 数据从站点B走FadianNet骨干网回到站点A（赞助者）出网
 
+### 举个真实的例子
+
+拿国内的场景来说（为什么都是境外出口？因为中国大陆没有IP Transit服务）：
+
+```
+站点 A（北京，自有 AS）→ VPN到日本Transit出网
+站点 B（上海，自有 AS）→ VPN到韩国Transit出网
+站点 C（北京，无BGP）→ 由A赞助，VPN连到A的北京PoP出网
+```
+
+**正常使用**：A在北京上网走日本Transit，B在上海上网走韩国Transit，C在北京上网通过A走日本Transit。A和B之间通过FadianNet的eBGP交换路由，所以A可能某些路由会选择走B的韩国出口，反之亦然——这就是正常的BGP路径选择。
+
+**A跑到B家里了**：A的手机在B家连上FadianRoam的WiFi，认证通过（B的RADIUS → Federation Relay → A的RADIUS验证），然后数据流量漫游回A的北京站点，从日本Transit出网。当然BGP路径选择可能会让部分流量走B的韩国出口——这种绕路在默认组网下是正常的，可以通过路由策略精细调整，但完全避免是做不到的，我觉得也是合理的。
+
+**C跑到B家里了**：认证走C自己的MGMT VPN到Federation Relay（每个FadianRoam Site都有自己独立的MGMT VPN），但是数据流量漫游回A（C的赞助者），从A的日本Transit出网。**注意这里认证和数据走的是不同的路径**——认证到C，数据到A。
+
 ### 为什么选方案B？
 
 方案A（共享/24 Anycast）虽然延迟低，但需要sponsor一段/24前缀，还要搞RPKI多AS ROA，依赖性太强。方案B每个站点用自己的资源，强制BGP确保骨干网质量，而且流量统计很清晰——谁的用户谁的出口，一目了然。
