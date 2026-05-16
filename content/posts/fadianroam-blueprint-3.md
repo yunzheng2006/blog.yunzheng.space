@@ -94,7 +94,7 @@ FadianNet 骨干网（eBGP mesh）
 
 ## 464XLAT：没有公网IPv4也能玩
 
-weitcis（KO6BBG / AS200825）提了一个很有意思的想法：如果站点没有公网IPv4，可以用464XLAT来解决。
+weitcis（KO6BBG / AS200825）提了一个很有意思的想法：如果站点没有公网IPv4，可以用[464XLAT](https://soha.moe/post/ipv6-only-preferred-at-home.html)来解决。
 
 简单来说464XLAT就是在IPv6-only的网络上跑IPv4，客户端把IPv4包装进IPv6（CLAT），服务端再解开（PLAT）。这样就算你的站点只有IPv6，用户设备照样能访问IPv4的互联网。
 
